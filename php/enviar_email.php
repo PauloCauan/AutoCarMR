@@ -9,6 +9,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $data = $_POST["data"];
   $horario = $_POST["horario"];
 
+  // Verifique se o horário está dentro do horário de funcionamento
+  $horarioFuncionamentoInicio = strtotime('08:00');
+  $horarioFuncionamentoFim = strtotime('17:00');
+  $horarioSelecionado = strtotime($horario);
+
+  if ($horarioSelecionado < $horarioFuncionamentoInicio || $horarioSelecionado > $horarioFuncionamentoFim) {
+    echo "O horário selecionado está fora do horário de funcionamento.";
+    exit;
+  }
+
   // Configurações do e-mail
   $to = "autocarmr6@gmail.com";
   $subject = "Agendamento - Auto-Car MR";
