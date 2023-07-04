@@ -1,241 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto-Car MR - Agendamento</title>
-  <link rel="stylesheet" href="style.css">
-  
+  <title>Agendamento - Auto-Car MR</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="logoauto.jpg" alt="Logo Auto-Car MR">
-      <h1>Auto-Car MR</h1>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="#servicos">Mecânica</a></li>
-        <li><a href="#borracharia">Borracharia</a></li>
-        <li><a href="#guincho">Guincho</a></li>
-        <li><a href="agendamento.html">Agendamento</a></li>
-        <li><a href="mailto:autocarmr6@gmail.com">E-mail</a></li>
-      </ul>
-    </nav>
+    <h1>Auto-Car MR</h1>
+    <img src="logo.png" alt="Auto-Car MR Logo">
   </header>
 
-  <main>
-    <section id="agendamento">
-      <h2>Agendamento</h2>
-      <p>Preencha o formulário abaixo para agendar um serviço:</p>
-      <form action="enviar_email.php" method="POST">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="agendamento.html">Agendamento</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
 
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
+  <section>
+    <h2>Agendamento de Serviço</h2>
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
 
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
 
-      
-        <label for="data">Data do Agendamento:</label>
-        <input type="date" id="data" name="data" required>
+      <label for="telefone">Telefone:</label>
+      <input type="text" id="telefone" name="telefone" required>
 
-        <label for="horario">Horário do Agendamento:</label>
-        <input type="time" id="horario" name="horario" required>
+      <label for="data">Data:</label>
+      <input type="date" id="data" name="data" required>
 
-        <label for="marca">Marca do Veículo:</label>
-<select id="marca" name="marca" required>
-  <option value="" disabled selected>Selecione a Marca</option>
-  <option value="Ford">Ford</option>
-  <option value="Tesla">Tesla</option>
-  <option value="Volkswagen">Volkswagen</option>
-  <option value="Hyundai">Hyundai</option>
-  <option value="Honda">Honda</option>
-  <option value="Mitsubishi">Mitsubishi</option>
-  <option value="Porsche">Porsche</option>
-  <option value="BMW">BMW</option>
-  <option value="Toyota">Toyota</option>
-  <option value="Mercedes-Benz">Mercedes-Benz</option>
-  <option value="Peugeot">Peugeot</option>
-  <option value="Renault">Renault</option>
-  <option value="Nissan">Nissan</option>
-  <option value="Citroen">Citroen</option>
-  <option value="Fiat">Fiat</option>
-  <option value="Audi">Audi</option>
-  <option value="Kia">Kia</option>
-  <option value="Outro">Outro</option>
-</select>
+      <label for="horario">Horário:</label>
+      <input type="time" id="horario" name="horario" required>
 
-<label for="modelo" id="modeloLabel" style="display: none;">Modelo do Veículo:</label>
-<select id="modelo" name="modelo" style="display: none;">
-  <option value="" disabled selected>Selecione o Modelo</option>
-</select>
+      <label for="marca">Marca do Veículo:</label>
+      <select id="marca" name="marca" required>
+        <option value="" disabled selected>Selecione a Marca</option>
+        <option value="Ford">Ford</option>
+        <option value="Tesla">Tesla</option>
+        <option value="Volkswagen">Volkswagen</option>
+        <option value="Hyundai">Hyundai</option>
+        <option value="Honda">Honda</option>
+        <option value="Mitsubishi">Mitsubishi</option>
+        <option value="Porsche">Porsche</option>
+        <option value="BMW">BMW</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Mercedes-Benz">Mercedes-Benz</option>
+        <option value="Peugeot">Peugeot</option>
+        <option value="Renault">Renault</option>
+        <option value="Nissan">Nissan</option>
+        <option value="Citroen">Citroen</option>
+        <option value="Fiat">Fiat</option>
+        <option value="Audi">Audi</option>
+        <option value="Kia">Kia</option>
+        <option value="Outro">Outro</option>
+      </select>
 
-<script>
-  document.getElementById('marca').addEventListener('change', function() {
-    var marca = this.value;
-    var modeloLabel = document.getElementById('modeloLabel');
-    var modeloSelect = document.getElementById('modelo');
+      <label for="modelo">Modelo do Veículo:</label>
+      <select id="modelo" name="modelo" required>
+        <option value="" disabled selected>Selecione o Modelo</option>
+      </select>
 
-    if (marca !== '') {
-      modeloLabel.style.display = 'block';
-      modeloSelect.style.display = 'block';
-      modeloSelect.innerHTML = '';
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" rows="5"></textarea>
 
-      switch (marca) {
-        case 'Ford':
-          addOption(modeloSelect, 'EcoSport', 'EcoSport');
-          addOption(modeloSelect, 'Fiesta', 'Fiesta');
-          addOption(modeloSelect, 'Focus', 'Focus');
-          addOption(modeloSelect, 'Fusion', 'Fusion');
-          addOption(modeloSelect, 'Ka', 'Ka');
-          addOption(modeloSelect, 'Ranger', 'Ranger');
-          break;
-        case 'Tesla':
-          addOption(modeloSelect, 'Model 3', 'Model 3');
-          addOption(modeloSelect, 'Model S', 'Model S');
-          addOption(modeloSelect, 'Model X', 'Model X');
-          addOption(modeloSelect, 'Model Y', 'Model Y');
-          break;
-        case 'Volkswagen':
-          addOption(modeloSelect, 'Gol', 'Gol');
-          addOption(modeloSelect, 'Jetta', 'Jetta');
-          addOption(modeloSelect, 'Nivus', 'Nivus');
-          addOption(modeloSelect, 'Polo', 'Polo');
-          addOption(modeloSelect, 'T-Cross', 'T-Cross');
-          addOption(modeloSelect, 'Tiguan', 'Tiguan');
-          break;
-        case 'Hyundai':
-          addOption(modeloSelect, 'Creta', 'Creta');
-          addOption(modeloSelect, 'HB20', 'HB20');
-          addOption(modeloSelect, 'i20', 'i20');
-          addOption(modeloSelect, 'i30', 'i30');
-          addOption(modeloSelect, 'Santa Fe', 'Santa Fe');
-          addOption(modeloSelect, 'Tucson', 'Tucson');
-          break;
-        case 'Honda':
-          addOption(modeloSelect, 'Civic', 'Civic');
-          addOption(modeloSelect, 'CR-V', 'CR-V');
-          addOption(modeloSelect, 'Fit', 'Fit');
-          addOption(modeloSelect, 'HR-V', 'HR-V');
-          addOption(modeloSelect, 'WR-V', 'WR-V');
-          break;
-        case 'Mitsubishi':
-          addOption(modeloSelect, 'Lancer', 'Lancer');
-          addOption(modeloSelect, 'Outlander', 'Outlander');
-          addOption(modeloSelect, 'Pajero', 'Pajero');
-          addOption(modeloSelect, 'Pajero Sport', 'Pajero Sport');
-          addOption(modeloSelect, 'ASX', 'ASX');
-          break;
-        case 'Porsche':
-          addOption(modeloSelect, '911', '911');
-          addOption(modeloSelect, 'Cayenne', 'Cayenne');
-          addOption(modeloSelect, 'Macan', 'Macan');
-          addOption(modeloSelect, 'Panamera', 'Panamera');
-          addOption(modeloSelect, 'Taycan', 'Taycan');
-          break;
-        case 'BMW':
-          addOption(modeloSelect, 'Série 3', 'Série 3');
-          addOption(modeloSelect, 'Série 5', 'Série 5');
-          addOption(modeloSelect, 'X1', 'X1');
-          addOption(modeloSelect, 'X3', 'X3');
-          addOption(modeloSelect, 'X5', 'X5');
-          break;
-        case 'Toyota':
-          addOption(modeloSelect, 'Corolla', 'Corolla');
-          addOption(modeloSelect, 'Etios', 'Etios');
-          addOption(modeloSelect, 'Hilux', 'Hilux');
-          addOption(modeloSelect, 'Rav4', 'Rav4');
-          addOption(modeloSelect, 'Yaris', 'Yaris');
-          break;
-        case 'Mercedes-Benz':
-          addOption(modeloSelect, 'Classe A', 'Classe A');
-          addOption(modeloSelect, 'Classe C', 'Classe C');
-          addOption(modeloSelect, 'Classe E', 'Classe E');
-          addOption(modeloSelect, 'GLA', 'GLA');
-          addOption(modeloSelect, 'GLC', 'GLC');
-          break;
-        case 'Peugeot':
-          addOption(modeloSelect, '208', '208');
-          addOption(modeloSelect, '2008', '2008');
-          addOption(modeloSelect, '308', '308');
-          addOption(modeloSelect, '3008', '3008');
-          addOption(modeloSelect, '5008', '5008');
-          break;
-        case 'Renault':
-          addOption(modeloSelect, 'Captur', 'Captur');
-          addOption(modeloSelect, 'Duster', 'Duster');
-          addOption(modeloSelect, 'Kwid', 'Kwid');
-          addOption(modeloSelect, 'Logan', 'Logan');
-          addOption(modeloSelect, 'Sandero', 'Sandero');
-          break;
-        case 'Nissan':
-          addOption(modeloSelect, 'Frontier', 'Frontier');
-          addOption(modeloSelect, 'Kicks', 'Kicks');
-          addOption(modeloSelect, 'March', 'March');
-          addOption(modeloSelect, 'Sentra', 'Sentra');
-          addOption(modeloSelect, 'Versa', 'Versa');
-          break;
-        case 'Citroen':
-          addOption(modeloSelect, 'C3', 'C3');
-          addOption(modeloSelect, 'C4 Cactus', 'C4 Cactus');
-          addOption(modeloSelect, 'C4 Lounge', 'C4 Lounge');
-          addOption(modeloSelect, 'Jumpy', 'Jumpy');
-          addOption(modeloSelect, 'Aircross', 'Aircross');
-          break;
-        case 'Fiat':
-          addOption(modeloSelect, 'Argo', 'Argo');
-          addOption(modeloSelect, 'Cronos', 'Cronos');
-          addOption(modeloSelect, 'Mobi', 'Mobi');
-          addOption(modeloSelect, 'Palio', 'Palio');
-          addOption(modeloSelect, 'Uno', 'Uno');
-          break;
-        case 'Audi':
-          addOption(modeloSelect, 'A3', 'A3');
-          addOption(modeloSelect, 'A4', 'A4');
-          addOption(modeloSelect, 'Q3', 'Q3');
-          addOption(modeloSelect, 'Q5', 'Q5');
-          addOption(modeloSelect, 'TT', 'TT');
-          break;
-        case 'Kia':
-          addOption(modeloSelect, 'Cerato', 'Cerato');
-          addOption(modeloSelect, 'Picanto', 'Picanto');
-          addOption(modeloSelect, 'Seltos', 'Seltos');
-          addOption(modeloSelect, 'Soul', 'Soul');
-          addOption(modeloSelect, 'Sportage', 'Sportage');
-          break;
-        case 'Outro':
-          addOption(modeloSelect, 'Outro', 'Outro');
-          break;
-        default:
-          break;
-      }
-    } else {
-      modeloLabel.style.display = 'none';
-      modeloSelect.style.display = 'none';
-      modeloSelect.innerHTML = '';
-    }
-  });
-
-  function addOption(selectElement, text, value) {
-    var option = document.createElement('option');
-    option.text = text;
-    option.value = value;
-    selectElement.add(option);
-  }
-</script>
-
-
-        <input type="submit" value="Agendar">
-      </form>
-    </section>
-  </main>
+      <input type="button" value="Agendar" onclick="agendar()">
+    </form>
+  </section>
 
   <footer>
-    <p>&copy; 2023 Auto-Car MR | E-mail: <a href="mailto:autocarmr6@gmail.com">autocarmr6@gmail.com</a></p>
+    <p>&copy; 2023 Auto-Car MR. Todos os direitos reservados.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
